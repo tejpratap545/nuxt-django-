@@ -1,5 +1,7 @@
 <template>
-  <div>hello</div>
+  <div>
+    {{ this.$auth.user }}
+  </div>
 </template>
 
 <script>

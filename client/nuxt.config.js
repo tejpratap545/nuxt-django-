@@ -47,7 +47,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/auth'
   ],
   /*
    ** Axios module configuration
@@ -82,9 +83,44 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) { }
+    extend(config, ctx) {}
   },
   server: {
-    port: 3035
+    port: 3001
+  },
+  axios: {
+    baseURL: 'http://127.0.0.1:8000'
+  },
+  auth: {
+    strategies: {
+      autoFetchUser: false,
+      local: {
+        endpoints: {
+          login: {
+            url: 'rest-auth/login/',
+            method: 'post',
+            propertyName: 'token'
+          },
+          logout: { url: 'rest-auth/logout/', method: 'post' },
+          user: false
+        }
+      },
+      social: {
+        _scheme: 'oauth2',
+        authorization_endpoint: 'https://accounts.google.com/o/oauth2/auth',
+        userinfo_endpoint: 'https://www.googleapis.com/oauth2/v3/userinfo',
+        scope: ['openid', 'profile', 'email'],
+        access_type: undefined,
+        access_token_endpoint: undefined,
+        response_type: 'token',
+        token_type: 'Bearer',
+        redirect_uri: undefined,
+        client_id:
+          '124789396555-np75nuuanqbcpsq5gc11kudt02o40aat.apps.googleusercontent.com',
+        // client_secret: 'OTn2DfbNM1mUYMKiQoEj0KMG',
+        token_key: 'access_token',
+        state: 'UNIQUE_AND_NON_GUESSABLE'
+      }
+    }
   }
 }

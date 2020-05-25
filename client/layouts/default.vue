@@ -32,8 +32,16 @@
 
       <v-toolbar-title v-text="title" class=" text-center" />
       <v-spacer />
-      <nuxt-link to="login"><v-btn>login</v-btn></nuxt-link>
-      <nuxt-link to="signup"> <v-btn>sign up</v-btn></nuxt-link>
+      <div v-if="this.$auth.loggedIn">
+        {{ this.$auth.user.email }}
+        <v-btn @click="logout"> logout </v-btn>
+      </div>
+
+      <div v-else>
+        <nuxt-link to="login"><v-btn>login</v-btn></nuxt-link>
+
+        <nuxt-link to="signup"> <v-btn>sign up</v-btn></nuxt-link>
+      </div>
     </v-app-bar>
     <v-content>
       <v-container>
@@ -68,6 +76,19 @@ export default {
       ],
       miniVariant: false,
       title: 'Welcome to this nuxt js + django universal app '
+    }
+  },
+  created() {
+    try {
+      this.$auth.setUser(this.$auth.$storage.getLocalStorage('user'))
+    } catch {
+      this.$auth.setUser(false)
+    }
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout()
+      localStorage.removeItem('auth.user')
     }
   }
 }
