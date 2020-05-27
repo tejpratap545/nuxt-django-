@@ -29,4 +29,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 
 
+    path('api/', include('app.video.urls'))
+
+
 ]

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.Users',
+
+    'app.video',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -169,8 +171,8 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
 REST_AUTH_SERIALIZERS = {
 
-    'TOKEN_SERIALIZER': 'app.Users.s.JSONWebTokenAuthenticationQS',
-    'JWT_SERIALIZER': 'app.Users.s.JWTSerializer', }
+    'TOKEN_SERIALIZER': 'app.Users.serializers.JSONWebTokenAuthenticationQS',
+    'JWT_SERIALIZER': 'app.Users.serializers.JWTSerializer', }
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 CORS_ORIGIN_ALLOW_ALL = True
