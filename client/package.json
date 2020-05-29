@@ -21,7 +21,10 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "nuxt": "^2.0.0",
+    "plyr": "^3.6.2",
     "rsvp": "^4.8.5",
+    "videojs-youtube": "^2.6.1",
+    "vue-plyr": "^6.0.4",
     "vue-video-player": "^5.0.2"
   },
   "devDependencies": {

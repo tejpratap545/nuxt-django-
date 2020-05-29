@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <VideoWatch :video="video" />
-    {{ video }}
   </v-app>
 </template>
 
@@ -20,7 +19,9 @@ export default {
       videos: (state) => state.videos.videos
     }),
     video() {
-      return this.videos.find((v) => v.id === this.$route.params.id)
+      const id = parseInt(this.$route.params.id)
+
+      return this.videos.find((v) => v.id === id)
     }
   },
 

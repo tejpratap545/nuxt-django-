@@ -45,7 +45,7 @@
     </v-app-bar>
     <v-content>
       <v-container>
-        <nuxt keepAlive />
+        <nuxt />
       </v-container>
     </v-content>
 
