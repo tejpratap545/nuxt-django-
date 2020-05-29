@@ -30,11 +30,11 @@
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
 
-      <v-toolbar-title v-text="title" class=" text-center" />
+      <v-toolbar-title class=" text-center" v-text="title" />
       <v-spacer />
       <div v-if="this.$auth.loggedIn">
         {{ this.$auth.user.email }}
-        <v-btn @click="logout"> logout </v-btn>
+        <v-btn @click="$auth.logout()"> logout </v-btn>
       </div>
 
       <div v-else>
@@ -45,7 +45,7 @@
     </v-app-bar>
     <v-content>
       <v-container>
-        <nuxt />
+        <nuxt keepAlive />
       </v-container>
     </v-content>
 
@@ -78,18 +78,12 @@ export default {
       title: 'Welcome to this nuxt js + django universal app '
     }
   },
-  created() {
-    try {
-      this.$auth.setUser(this.$auth.$storage.getLocalStorage('user'))
-    } catch {
-      this.$auth.setUser(false)
+  created() {},
+  methods: {
+    logout() {
+      this.$auth.logout()
     }
   },
-  methods: {
-    async logout() {
-      await this.$auth.logout()
-      localStorage.removeItem('auth.user')
-    }
-  }
+  middleware: 'loadVideosandTag'
 }
 </script>

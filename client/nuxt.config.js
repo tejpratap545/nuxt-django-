@@ -54,7 +54,7 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -89,7 +89,7 @@ export default {
     port: 3001
   },
   axios: {
-    baseURL: 'http://127.0.0.1:8000'
+    baseURL: 'http://127.0.0.1:8000/api'
   },
   auth: {
     strategies: {
