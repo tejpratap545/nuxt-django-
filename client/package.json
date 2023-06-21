@@ -20,7 +20,7 @@
     "@nuxtjs/axios": "^5.10.3",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^3.4.3",
     "plyr": "^3.6.2",
     "rsvp": "^4.8.5",
     "videojs-youtube": "^2.6.1",
